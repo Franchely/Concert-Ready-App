@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  mbid: 1
+  tmid: 1
+  sortName: MyString
+
+two:
+  name: MyString
+  mbid: 1
+  tmid: 1
+  sortName: MyString
