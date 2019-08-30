@@ -2,8 +2,7 @@ import React, {Component} from "react"
 import {NavLink} from "react-router-dom"
 import {connect} from "react-redux"
 
-
-class Home extends Component {
+class LoggedInHome extends Component {
 
     render() {
 
@@ -18,20 +17,6 @@ class Home extends Component {
                     <h2>View past setlists and concerts</h2>
                 </div>
 
-                <div className="buttons-div">
-                    <NavLink to="/login">
-                    <button className="log-in-button">
-                        Log In
-                    </button>
-                    </NavLink>
-                    <br></br>
-                    <NavLink to="/signup">
-                    <button className="sign-up-button">
-                        Sign Up
-                    </button>
-                    </NavLink>
-                </div>
-
             </div>
         )
     }
@@ -41,4 +26,4 @@ const mapStateToProps = (state) => {
     return state 
 }
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(LoggedInHome)

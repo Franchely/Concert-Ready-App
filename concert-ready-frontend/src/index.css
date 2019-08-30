@@ -18,22 +18,21 @@ code {
   height: 80px;
 }
 
+.home-div {
+  display: flex;
+  justify-content: space-around;
+}
+
 .left-div {
   background-color: antiquewhite; 
-  float: left;
-  margin: 50px;
 }
 
 .right-div {
   background-color: antiquewhite; 
-  float: left;
-  margin: 50px;
 }
 
 .buttons-div {
   background-color: antiquewhite; 
-  float: left;
-  margin: 50px;
   padding: 20px;
 }
 

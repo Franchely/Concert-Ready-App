@@ -6,7 +6,7 @@ import Home from './components/Home';
 import NavBar from './components/NavBar';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
-
+import LoggedInHome from "./components/LoggedInHome"
 
 function App() {
   return (
