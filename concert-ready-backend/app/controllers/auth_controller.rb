@@ -1,5 +1,5 @@
 class AuthController < ApplicationController
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized?
 
     def create
         user = User.find_by(username: user_login_params[:username])
@@ -8,6 +8,14 @@ class AuthController < ApplicationController
             render json: {user: user, jwt: token}
         else
             render json: { message: 'Invalid username or password' }
+        end
+    end
+
+    def persist
+        if authenticated?
+          render json: auth_response_json(user_who_is_logged_in)
+        else
+          tell_user_to_go_away!
         end
     end
 

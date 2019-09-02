@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_155602) do
+ActiveRecord::Schema.define(version: 2019_09_02_012326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(version: 2019_08_29_155602) do
     t.integer "mbid"
     t.integer "tmid"
     t.string "sortName"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "setlists", force: :cascade do |t|
+    t.string "artistName"
+    t.string "date"
+    t.string "cityName"
+    t.string "state"
+    t.string "artistMbid"
+    t.string "tourName"
+    t.string "venueName"
+    t.string "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
