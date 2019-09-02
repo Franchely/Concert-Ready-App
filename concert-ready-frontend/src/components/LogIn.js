@@ -18,23 +18,36 @@ class LogIn extends Component {
                 password: this.props.password
             })
         }).then(response => response.json())
-        .then(userInfo => {
+        .then(userInfo => { 
             if (!userInfo.errors) {
                 localStorage.token = userInfo.jwt
+                localStorage.username = userInfo.user.username 
+                localStorage.id = userInfo.user.id 
                 this.handleLogin(userInfo)
             }
         })
     }
 
     handleLogin = (userInfo) => {
-       this.props.dispatch({type: "CURRENT_USER", payload: userInfo})
-       this.props.history.push("/");
+       this.props.dispatch({type: "CURRENT_USER", payload: userInfo.user})
+      
     }
 
     render() {
 
         return (
-            <div className="log-in-div">
+            <div className="home-div">
+
+             
+                        <div className="left-div">
+                            <h2>Search concerts happening soon</h2>
+                        </div>
+
+                        <div className="right-div">
+                            <h2>View past setlists and concerts</h2>
+                        </div>
+
+                <div className="buttons-div">
                <h2>Log In</h2> 
 
                <form onSubmit={this.handleSubmit} className="log-in-form">
@@ -44,6 +57,7 @@ class LogIn extends Component {
                    <br></br>
                    <button type="submit">Submit</button>
                </form>
+               </div>
             </div>
         )
     }
