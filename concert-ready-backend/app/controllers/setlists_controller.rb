@@ -14,30 +14,26 @@ class SetlistsController < ApplicationController
     end
 
     def create
-        SetlistSong.destroy_all
-        Setlist.destroy_all
-        Song.destroy_all
-       
         
-        artist = params.permit(:artist)[:artist]
-        artist_url = artist.split(" ").join("%20")
-        response = RestClient.get("https://api.setlist.fm/rest/1.0/search/setlists?artistName=#{artist_url}&p=1", headers={"Accept": "application/json", "x-api-key": ENV["API_SECRET_KEY"]}) 
+        
+        @artist = params[:artist].permit(:id, :name, :mbid)
+        artist_url = @artist[:mbid]
+       
+        response = RestClient.get("https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=#{artist_url}&p=1", headers={"Accept": "application/json", "x-api-key": ENV["API_SECRET_KEY"]}) 
         parsed_response = JSON.parse(response.body)
 
+
         parsed_response["setlist"].each do |setlist| 
-            artist = setlist["artist"]["name"]
+            artistMbid = setlist["artist"]["mbid"]
             venue = setlist["venue"]["name"]
             city = setlist["venue"]["city"]["name"]
             country = setlist["venue"]["city"]["country"]["name"]
             date = setlist["eventDate"]
-
-            # # create artist
-            # @artistObject = Artist.find_or_create_by(name: artist)
             
             # create setlist
-            setlistObject = Setlist.find_or_create_by(artist: @artistObject, venue: venue, city: city, country: country, date: date)
+            setlistObject = Setlist.find_or_create_by(artist: Artist.find_by(mbid: artistMbid), venue: venue, city: city, country: country, date: date)
            
-            # iterate through songs
+          
             if setlist["sets"]["set"].length == 0
                 next 
             else 
@@ -47,7 +43,7 @@ class SetlistsController < ApplicationController
                     end 
             end
         end 
-        setlists = Setlist.all
+        setlists = Setlist.where(artist: Artist.find_by(mbid: artist_url))
         render json: setlists, include: [:setlist_songs]
     end
 

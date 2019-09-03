@@ -8,7 +8,8 @@ import { createStore } from 'redux'
             currentUser: {},
             user: {},
             searchTerm: "",
-            clickedArtist: {}
+            clickedArtist: {},
+            allSetlists: []
             
         }
 
@@ -49,6 +50,13 @@ const userReducer = (state = initialState, action) =>{
                 state = {
                     ...state, 
                     clickedArtist: action.payload
+                }
+                break;
+        case "ALL_SETLISTS": 
+                state = {
+                    ...state, 
+                    allSetlists: action.payload
+
                 }
                 break;
         default:
