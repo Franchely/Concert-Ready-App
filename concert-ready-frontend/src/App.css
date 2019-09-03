@@ -59,3 +59,19 @@ code {
 .navbar-button:hover {
   background-color: white;
 }
+
+.setlist {
+  background-color: lightcoral;
+  text-align: left;
+  margin: 100px;
+}
+
+.link-to-setlists {
+  text-decoration: none;
+  color: black;
+}
+
+.link-to-setlists:hover {
+  text-decoration: underline;
+  color: lightsalmon;
+}

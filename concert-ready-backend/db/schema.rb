@@ -10,29 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_012326) do
+ActiveRecord::Schema.define(version: 2019_09_03_142721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
-    t.integer "mbid"
-    t.integer "tmid"
-    t.string "sortName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "setlist_songs", force: :cascade do |t|
+    t.bigint "song_id"
+    t.bigint "setlist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["setlist_id"], name: "index_setlist_songs_on_setlist_id"
+    t.index ["song_id"], name: "index_setlist_songs_on_song_id"
+  end
+
   create_table "setlists", force: :cascade do |t|
-    t.string "artistName"
     t.string "date"
-    t.string "cityName"
-    t.string "state"
-    t.string "artistMbid"
-    t.string "tourName"
-    t.string "venueName"
-    t.string "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "city"
+    t.string "venue"
+    t.string "country"
+    t.bigint "artist_id"
+    t.index ["artist_id"], name: "index_setlists_on_artist_id"
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,4 +56,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_012326) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "setlist_songs", "setlists"
+  add_foreign_key "setlist_songs", "songs"
+  add_foreign_key "setlists", "artists"
 end

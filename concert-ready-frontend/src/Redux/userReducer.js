@@ -7,7 +7,8 @@ import { createStore } from 'redux'
             password: "",
             currentUser: {},
             user: {},
-            searchTerm: ""
+            searchTerm: "",
+            clickedArtist: {}
             
         }
 
@@ -44,6 +45,12 @@ const userReducer = (state = initialState, action) =>{
                 searchTerm: action.payload
             }
             break;
+        case "CLICK_ARTIST":
+                state = {
+                    ...state, 
+                    clickedArtist: action.payload
+                }
+                break;
         default:
            state = initialState
            break;

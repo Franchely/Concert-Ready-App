@@ -4,19 +4,23 @@ import {connect} from "react-redux"
 
 
 
+
 class ViewSetlists extends Component {
 
+    state = {
+        artist: {}
+    }
 
     componentDidMount() {
-        console.log(this.props.searchTerm)
-        
+        this.setState({artist: this.props.clickedArtist})
     }
 
     render() {
-        
-
+        console.log(this.props.clickedArtist)
         return (
-            <div>View Setlists</div>
+            <div>
+
+            </div>
         )
     }
 }
