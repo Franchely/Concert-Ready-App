@@ -1,3 +1,4 @@
 class SetlistSerializer < ActiveModel::Serializer
-  attributes :id, :artistName, :date, :cityName, :state, :artistMbid, :tourName, :venueName, :year
+  attributes :id, :artist, :date, :city, :country, :venue, :setlist_songs
+
 end
