@@ -38,8 +38,8 @@ class SetlistsController < ApplicationController
                 next 
             else 
                     setlist["sets"]["set"].first["song"].each do |songObject|
-                        songTitle = Song.create(name: songObject["name"])
-                        SetlistSong.create(setlist: setlistObject, song: songTitle)
+                        songTitle = Song.find_or_create_by(name: songObject["name"])
+                        SetlistSong.create(setlist: setlistObject, song: songTitle, song_name: songObject["name"])
                     end 
             end
         end 

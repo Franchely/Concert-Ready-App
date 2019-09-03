@@ -5,8 +5,8 @@ class Setlist extends Component {
 
 
     renderSongs = () => {
-        this.props.setlist.setlist_songs.map(song => {
-            return <li>{song.id}</li>
+        return this.props.setlist.setlist_songs.map(song => {
+            return <li>{song.song_name}</li>
         })
     }
    

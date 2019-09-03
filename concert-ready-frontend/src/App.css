@@ -64,6 +64,7 @@ code {
   background-color: lightcoral;
   text-align: left;
   margin: 100px;
+  display: flex;
 }
 
 .link-to-setlists {
