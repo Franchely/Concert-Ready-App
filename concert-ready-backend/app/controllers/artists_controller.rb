@@ -26,7 +26,8 @@ class ArtistsController < ApplicationController
         artists_array = []
         parsed_response["setlist"].each do |setlist| 
             @artist = setlist["artist"]["name"]
-            @artistObject = Artist.find_or_create_by(name: @artist)
+            @mbid = setlist["artist"]["mbid"]
+            @artistObject = Artist.where(:name => @artist, :mbid => @mbid).first_or_create
             artists_array << @artistObject 
         end
 
@@ -40,7 +41,7 @@ class ArtistsController < ApplicationController
     private
 
     def artist_params
-        params.require(:artist).permit(:name)
+        params.require(:artist).permit(:name, :mbid)
     end
 
 end
