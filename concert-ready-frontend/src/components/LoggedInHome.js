@@ -40,9 +40,11 @@ class LoggedInHome extends Component {
             return <div>
                         <h1>Welcome, {localStorage.username}</h1>
                         <div className="right-div">
-                            <h2>View past setlists and concerts</h2>
+                            <h3>View past setlists and concerts</h3>
                             <form className="search-form">
-                                <input value={this.props.searchTerm} onChange={(e) => this.props.dispatch({type: "SEARCH_ARTIST", payload: e.target.value})} type="text" placeholder="Artist"></input>
+                                <input className="text-field" value={this.props.searchTerm} onChange={(e) => this.props.dispatch({type: "SEARCH_ARTIST", payload: e.target.value})} type="text" placeholder="Artist"></input>
+                                <br></br>
+                                <br></br>
                                 <button onClick={(e) => {this.fetchArtist(e)}} className="search-button" type="submit">Search</button> 
                             </form>
                         </div>

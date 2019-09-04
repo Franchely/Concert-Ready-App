@@ -8,13 +8,18 @@ import {connect} from "react-redux"
 class ViewSetlists extends Component {
 
     state = {
-        artist: [],
+        artist: "",
         gotSetlists: false,
-        setlists: null
+        setlists: null,
+        count: null
     }
 
     componentDidMount() {
-        this.setState({artist: this.props.clickedArtist})
+        
+        
+        this.setState({artist: localStorage.artist})
+
+        const artistName = localStorage.artist
 
             fetch("http://localhost:3000/setlists", {
                 method: "POST",
@@ -23,27 +28,36 @@ class ViewSetlists extends Component {
                     "Accepts": "application/json"
                 },
                 body: JSON.stringify({
-                    artist: this.props.clickedArtist
+                    artist: artistName
                 })
             }).then(response => response.json())
-            .then(data => this.setState({
+            .then(data => {
+                this.setState({
                 setlists: data,
-                gotSetlists: true
-            }))
+                gotSetlists: true,
+                count: Object.keys(data).length 
+                })
+            })
         
     }
 
     renderSingleSetlists = () => {
 
-        return this.state.setlists.map(setlist => {
-            return <Setlist setlist={setlist}></Setlist>
-        })
+        if (this.state.gotSetlists === true) {
+            return this.state.setlists.map(setlist => {
+                return <Setlist key={setlist.id} setlist={setlist}></Setlist>
+            })
+        } else {
+            return "Sorry, an error has ocurred."
+        }
+        
     }
 
     render() {
-        console.log(this.state.setlists)
+     
         return (
-            <div>
+            <div className="setlist-container">
+                {this.state.count ? this.state.count : null} Setlists For {localStorage.artist}
                 { !!this.state.setlists ? this.renderSingleSetlists() : <h2>Loading...</h2>}
             </div>
         )

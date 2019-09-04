@@ -4,13 +4,20 @@ import {connect} from "react-redux"
 
 class Artist extends Component {
 
+    handleClick = () => {
+        localStorage.artist = this.props.artist.name
+
+        this.props.dispatch({type: "CLICK_ARTIST", payload: this.props.artist})
+        
+    }
+
 
     render() {
 
         return (
 
             <div className="link-to-setlists-div">
-                <NavLink to="/setlists" onClick={() => this.props.dispatch({type: "CLICK_ARTIST", payload: this.props.artist})} artist={this.props.artist} className="link-to-setlists">
+                <NavLink to="/setlists" onClick={this.handleClick} artist={this.props.artist} className="link-to-setlists">
                     <h2>
                     {this.props.artist.name}
                     </h2>

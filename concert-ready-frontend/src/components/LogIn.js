@@ -20,7 +20,7 @@ class LogIn extends Component {
         }).then(response => response.json())
         .then(userInfo => { 
             if (!userInfo.errors) {
-                localStorage.token = userInfo.jwt
+                localStorage.token = userInfo.jwt 
                 localStorage.username = userInfo.user.username 
                 localStorage.id = userInfo.user.id 
                 this.handleLogin(userInfo)

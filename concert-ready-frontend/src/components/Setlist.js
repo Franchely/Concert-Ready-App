@@ -5,14 +5,38 @@ class Setlist extends Component {
 
 
     renderSongs = () => {
-        return this.props.setlist.setlist_songs.map(song => {
-            return <li>{song.song_name}</li>
-        })
+
+        if (this.props.setlist.setlist_songs.length > 0) {
+
+            return this.props.setlist.setlist_songs.map(song => {
+                return <li>{song.song_name}</li>
+            })
+        } else {
+            return <h4>SONGS NOT AVAILABLE</h4>
+        }
+    }
+
+    saveSetlist = (e) => {
+        let setlistId = parseInt(e.target.attributes.setlistid.value)
+        let userId = parseInt(e.target.attributes.userid.value)
+
+        fetch("http://localhost:3000/user_setlists", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                userId: userId,
+                setlistId: setlistId 
+            })
+        }).then(response => response.json())
+        .then(console.log)
     }
    
 
     render() {
-        console.log(this.props.setlist)
+       
         return (
 
             <div className="setlist">
@@ -21,7 +45,7 @@ class Setlist extends Component {
                 <ol className="songs-list">
                     {this.renderSongs()}
                 </ol>
-                <button className="save-setlist">Save Setlist</button>
+                <button onClick={(e) => this.saveSetlist(e)} setlistid={this.props.setlist.id} userid={localStorage.id} className="save-setlist">Save Setlist</button>
             </div>
         )
     }
