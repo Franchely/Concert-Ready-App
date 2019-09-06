@@ -3,16 +3,30 @@ import {connect} from "react-redux"
 
 class Setlist extends Component {
 
+    state = {
+        saved: false
+    }
+
 
     renderSongs = () => {
 
+        const setlistSongs = this.props.setlist.setlist_songs.reverse()
         if (this.props.setlist.setlist_songs.length > 0) {
 
-            return this.props.setlist.setlist_songs.map(song => {
+            return setlistSongs.map(song => {
                 return <li>{song.song_name}</li>
             })
         } else {
-            return <h4>SONGS NOT AVAILABLE</h4>
+            var eventDate = this.props.setlist.date 
+            var d = new Date()
+            var month = d.getMonth() +1
+            var day = d.getDay()
+            var year = d.getFullYear()
+            if (parseInt(eventDate.split("-")[1]) >= month && parseInt(eventDate.split("-")[0]) >= day && parseInt(eventDate.split("-")[2]) >= year)
+            return <h4>UPCOMING SHOW</h4>
+            else {
+                return <h4>NO SETLIST FOUND</h4>
+            }
         }
     }
 
@@ -31,7 +45,9 @@ class Setlist extends Component {
                 setlistId: setlistId 
             })
         }).then(response => response.json())
-        .then(console.log)
+        .then(this.setState({
+            saved: true
+        }))
     }
    
 
@@ -45,7 +61,9 @@ class Setlist extends Component {
                 <ol className="songs-list">
                     {this.renderSongs()}
                 </ol>
-                <button onClick={(e) => this.saveSetlist(e)} setlistid={this.props.setlist.id} userid={localStorage.id} className="save-setlist">Save Setlist</button>
+                {this.state.saved ? "Saved!" :
+               <button onClick={(e) => this.saveSetlist(e)} setlistid={this.props.setlist.id} userid={localStorage.id} className="save-setlist">Save Setlist</button>
+             }
             </div>
         )
     }

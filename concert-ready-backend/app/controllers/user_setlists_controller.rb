@@ -1,16 +1,17 @@
 class UserSetlistsController < ApplicationController
+    skip_before_action :authorized?
 
     def index
-        setlists = UserSetlist.all 
-        render json: setlists 
+        usersetlists = UserSetlist.all.order("created_at DESC")
+        render json: usersetlists 
     end
 
     def create
-        byebug
-
-        setlist = Setlist.find(params[:id])
-        user = User.find(params[:id])
-        usersetlist = UserSetlist.create(setlist: setlist, user: user)
+        
+        setlist = Setlist.find(params.permit(:setlistId)[:setlistId])
+        user = User.find(params.permit(:userId)[:userId])
+        
+        usersetlist = UserSetlist.create(setlist_id: setlist.id, user_id: user.id)
 
         render json: usersetlist
     end

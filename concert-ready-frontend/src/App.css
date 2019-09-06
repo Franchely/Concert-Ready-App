@@ -1,7 +1,10 @@
 .App {
   text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Rock Salt', cursive;
   height: 100vh;
+  justify-content: center;
+  
+  
 }
 
 
@@ -22,7 +25,7 @@ code {
 button {
   font-size: 15px;
   border-radius: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Rock Salt', cursive;
   background-color: darksalmon;
 }
 
@@ -30,10 +33,50 @@ button:hover {
   background-color: white;
 }
 
+.navbar-user {
+  font-size: 15px;
+  float: right;
+  margin: 10px;
+  margin-top: -15px;
+}
+
+.navbar-logout {
+color: purple;
+text-shadow: -1px -1px darksalmon;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+
+.concert-ready {
+  font-size: 30px;
+  float: left;
+}
+
+.view-artists {
+  margin-left: 20%;
+  width: 500px;
+}
+
+.setlist-count {
+  font-size: 30px;
+}
+
+.splash-page {
+  display: flex;
+  justify-content: center;
+}
+
 .text-field {
   height: 30px;
-  width: 500px;
+  width: 300px;
   font-size: 20px;
+  color: black;
+  font-weight: bold;
+  font-family: 'Rock Salt', cursive;
+  text-shadow: -1px -1px darksalmon;
 }
 
 .stitched {
@@ -41,110 +84,162 @@ button:hover {
   margin: 10px;
   margin-left: 50px;
   margin-right: 50px;
-  background: lightsalmon;
-  color: navy;
+  background: black;
+  color: white;
   font-size: 50px;
   font-weight: bold;
   line-height: 1.3em;
-  border: 2px dashed navy;
   border-radius: 10px;
   box-shadow: 0 0 0 4px lightsalmon, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
-  text-shadow: -3px -3px darksalmon;
+  text-shadow: -1px -1px darksalmon;
   font-weight: normal;
   font-style: italic;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Rock Salt', cursive;
+
   
 }
-
-/* .navbar {
-  background-color: lightsalmon;
-  margin: 50px;
-  height: 80px;
-  display: flex;
-  justify-content: left;
-  border-radius: 10px;
-  padding: 10px;
-} */
 
 .home-div {
   display: flex;
   justify-content: center;
-  color: navy;
+  color: white;
   text-shadow: -1px -1px darksalmon
   
 }
 
-
+.login-div {
+  display: flex;
+  justify-content: center;
+  text-shadow: -2px -2px darksalmon;
+}
 
 .right-div {
+  background-color: black;
   padding: 20px;
   margin: 10px;
-  margin-left: 500px;
-  margin-right: 500px;
-  background: lightsalmon;
-  color: navy;
+  background: black;
+  color: white;
   font-size: 20px;
-  border: 2px dashed navy;
+  text-shadow: -2px -2px darksalmon;
   border-radius: 10px;
   box-shadow: 0 0 0 4px lightsalmon, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
   font-weight: normal;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Rock Salt', cursive;
+}
+
+
+
+.search-div {
+  display: block;
+  justify-content: center;
+  padding: 20px;
+  margin: 10px;
+  margin-left: 20%;
+  margin-top: 70px;
+  width: 500px;
+  background: black;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px lightsalmon, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  font-weight: normal;
+  font-family: 'Rock Salt', cursive;
   
 }
 
+.splash-page-div {
+ align-content: center;
+}
+
 .buttons-div {
-  background-color: lightsalmon;
+  background-color: black;
+  color: white;
   padding: 20px;
   margin: 30px;
+  width: 300px;
   border-radius: 0px;
+  text-shadow: -2px -2px darksalmon;
+  box-shadow: 0 0 0 4px lightsalmon, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  border-radius: 10px;
+
+
 }
 
-.log-in-form {
-  font-size: 30px;
-}
 
 .navbar-button {
- background-color: lightsalmon;
+ background-color: black;
  border-style: none;
- font-size: 20px;
- margin: 20px;
- margin-bottom: 70px;
- color: navy;
+ font-size: 15px;
+ margin-left: 20px;
+ color: white;
  padding: 10px;
+ border-style: solid;
+  border-width: 2px;
+  border-color: white;
  
 }
 
 .navbar-button:hover {
-  background-color: white;
-  color: white;
+  border-color: white;
+  background-color: lightsalmon;
 }
 
 .setlist {
-  background-color: lightsalmon;
+  background-color: whitesmoke;
   text-align: left;
   margin: 30px;
-  padding: 30px;
   width: 400px;
-
-
-  background: lightsalmon;
-  color: #fff;
-  line-height: 1.3em;
-  border: 2px dashed #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 0 4px lightsalmon, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  background: whitesmoke;
+  color: black;
+  line-height: 2.3em;
   font-weight: normal;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Rock Salt', cursive;
+
+  box-shadow:
+  /* The top layer shadow */
+  0 -1px 1px rgba(0,0,0,0.15),
+  /* The second layer */
+  0 -10px 0 -5px whitesmoke,
+  /* The second layer shadow */
+  0 -10px 1px -4px rgba(0,0,0,0.15),
+   /* The third layer */
+  0 -20px 0 -10px whitesmoke,
+  /* The third layer shadow */
+  0 -20px 1px -9px rgba(0,0,0,0.15);
+  /* Padding for demo purposes */
+  padding: 30px;
  
 }
 
-.link-to-setlists {
+
+.link-to-setlists-div {
+  padding: 20px;
+  margin: 10px;
+  background: black;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.3em;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px lightsalmon, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  text-shadow: -2px -2px purple;
+  font-weight: normal;
+  font-style: italic;
+  font-family: 'Rock Salt', cursive;
+  margin-left: 20px;
+}
+
+.artist-navlink {
   text-decoration: none;
+  color: white;
+}
+
+.matching-results {
   color: black;
 }
 
-.link-to-setlists:hover {
-  text-decoration: underline;
+
+.artist-navlink:hover {
   color: lightsalmon;
 }
 
@@ -152,5 +247,9 @@ button:hover {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+  margin-left: 30%;
+  width: 550px;
 }
+
+
+

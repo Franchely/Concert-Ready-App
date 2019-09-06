@@ -38,8 +38,8 @@ class LoggedInHome extends Component {
     whichtoRender = () => {
         if (this.state.haveArtists === false) {
             return <div>
-                        <h1>Welcome, {localStorage.username}</h1>
-                        <div className="right-div">
+                       
+                        <div className="search-div">
                             <h3>View past setlists and concerts</h3>
                             <form className="search-form">
                                 <input className="text-field" value={this.props.searchTerm} onChange={(e) => this.props.dispatch({type: "SEARCH_ARTIST", payload: e.target.value})} type="text" placeholder="Artist"></input>

@@ -57,7 +57,8 @@ class ViewSetlists extends Component {
      
         return (
             <div className="setlist-container">
-                {this.state.count ? this.state.count : null} Setlists For {localStorage.artist}
+                <span className="setlist-count">{this.state.count ? this.state.count : null} Setlists For {localStorage.artist}</span>
+                
                 { !!this.state.setlists ? this.renderSingleSetlists() : <h2>Loading...</h2>}
             </div>
         )

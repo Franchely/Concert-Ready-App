@@ -19,7 +19,8 @@ class SetlistsController < ApplicationController
         artist_url = @artist.mbid 
 
         if  Setlist.exists?(artist: Artist.find(@artist.id))
-        render json: Setlist.where(artist: Artist.find(@artist.id))
+
+            render json: Setlist.where(artist: Artist.find(@artist.id))
 
         else
             
@@ -38,26 +39,15 @@ class SetlistsController < ApplicationController
                 setlistObject = Setlist.find_or_create_by(artist: Artist.find_by(mbid: artistMbid), venue: venue, city: city, country: country, date: date)
             
             
-                if setlist["sets"]["set"].length == 0
+                if setlist["sets"]["set"].count == 0
                     next 
                 else 
-                        setlist["sets"]["set"].first["song"].each do |songObject|
+                    setlist["sets"]["set"].each do |set|
+                        set["song"].each do |songObject|
                             songTitle = Song.create(name: songObject["name"])
                             SetlistSong.create(setlist: setlistObject, song: songTitle, song_name: songObject["name"])
-                        end 
-
-                        if setlist["sets"]["set"].second["song"]
-                            setlist["sets"]["set"].second["song"].each do |songObject|
-                            songTitle = Song.create(name: songObject["name"])
-                            SetlistSong.create(setlist: setlistObject, song: songTitle, song_name: songObject["name"])
-                            
-                        elsif setlist["sets"]["set"].third["song"]
-                            setlist["sets"]["set"].third["song"].each do |songObject|
-                                songTitle = Song.create(name: songObject["name"])
-                                SetlistSong.create(setlist: setlistObject, song: songTitle, song_name: songObject["name"])
-                            else 
-                                next   
-                        end 
+                        end
+                    end
                 end
             end 
             setlists = Setlist.where(artist: Artist.find_by(mbid: artist_url))
