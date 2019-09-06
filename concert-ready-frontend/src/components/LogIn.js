@@ -4,6 +4,31 @@ import { connect } from 'react-redux';
 
 class LogIn extends Component {
 
+    state = {
+        logInClicked: false,
+        registerClicked: false,
+        loggedIn: false
+    }
+
+    handleRegister = (event) => {
+        event.preventDefault()
+
+        fetch("http://localhost:3000/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                username: this.props.username,
+                password: this.props.password,
+                location: this.props.location,
+                bio: "N/A"
+            })
+        }).then(response => response.json())
+        .then(this.handleLogin)
+    }
+
     handleSubmit = (event) => {
         event.preventDefault()
 
@@ -20,7 +45,7 @@ class LogIn extends Component {
         }).then(response => response.json())
         .then(userInfo => { 
             if (!userInfo.errors) {
-                localStorage.token = userInfo.jwt
+                localStorage.token = userInfo.jwt 
                 localStorage.username = userInfo.user.username 
                 localStorage.id = userInfo.user.id 
                 this.handleLogin(userInfo)
@@ -30,33 +55,59 @@ class LogIn extends Component {
 
     handleLogin = (userInfo) => {
        this.props.dispatch({type: "CURRENT_USER", payload: userInfo.user})
+
+       this.setState({loggedIn: true})
       
+    }
+
+    showLogInForm = () => {
+        this.setState({logInClicked: !this.state.logInClicked})
+    }
+
+    showRegister = () => {
+        this.setState({registerClicked: !this.state.registerClicked})
     }
 
     render() {
 
         return (
-            <div className="home-div">
+            <div className="splash-page-div">
 
-             
-                        <div className="left-div">
-                            <h2>Search concerts happening soon</h2>
-                        </div>
-
-                        <div className="right-div">
+                        {/* <div className="right-div">
                             <h2>View past setlists and concerts</h2>
-                        </div>
+                        </div> */}
 
                 <div className="buttons-div">
-               <h2>Log In</h2> 
+               <h2 onClick={this.showLogInForm}>Log In</h2> 
 
-               <form onSubmit={this.handleSubmit} className="log-in-form">
-                   <input type="text" name="username" value={this.props.username} placeholder="Username" onChange={(e) => this.props.dispatch({type: "INPUT_USERNAME", payload: e.target.value})}></input>
-                   <br></br>
-                   <input type="password" name="password" value={this.props.password} placeholder="Password" onChange={(e) => this.props.dispatch({type: "INPUT_PASSWORD", payload: e.target.value})}></input>
-                   <br></br>
-                   <button type="submit">Submit</button>
-               </form>
+                {this.state.logInClicked ? 
+                    <form onSubmit={this.handleSubmit} className="log-in-form">
+                    <input type="text" name="username" value={this.props.username} placeholder="Username" onChange={(e) => this.props.dispatch({type: "INPUT_USERNAME", payload: e.target.value})}></input>
+                    <br></br>
+                    <input type="password" name="password" value={this.props.password} placeholder="Password" onChange={(e) => this.props.dispatch({type: "INPUT_PASSWORD", payload: e.target.value})}></input>
+                    <br></br>
+                    <button type="submit">Submit</button>
+                </form>
+                : 
+                    null}
+               
+               </div>
+
+               <div className="buttons-div">
+                   <h2 onClick={this.showRegister}>Register</h2>
+                   {this.state.registerClicked ? 
+                    <form onSubmit={this.handleRegister} className="register-form">
+                    <input type="text" name="username" value={this.props.username} placeholder="Username" onChange={(e) => this.props.dispatch({type: "INPUT_USERNAME", payload: e.target.value})}></input>
+                    <br></br>
+                    <input type="password" name="password" value={this.props.password} placeholder="Password" onChange={(e) => this.props.dispatch({type: "INPUT_PASSWORD", payload: e.target.value})}></input>
+                    <br></br>
+                    <input type="text" name="location" value={this.props.location} placeholder="City, State" onChange={(e) => this.props.dispatch({type: "INPUT_LOCATION", payload: e.target.value})}></input>
+                    <br></br>
+                    <button type="submit">Submit</button>
+                    </form>
+                   : 
+                    null}
+                   
                </div>
             </div>
         )

@@ -9,7 +9,8 @@ import { createStore } from 'redux'
             user: {},
             searchTerm: "",
             clickedArtist: {},
-            allSetlists: []
+            allSetlists: [],
+            location: ""
             
         }
 
@@ -40,6 +41,12 @@ const userReducer = (state = initialState, action) =>{
                 user: action.payload 
             }
             break;
+        case 'INPUT_LOCATION':
+                state = {
+                    ...state, 
+                    location: action.payload
+                }
+                break;
         case "SEARCH_ARTIST":
             state = {
                 ...state,

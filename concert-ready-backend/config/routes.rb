@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_setlists
   resources :setlist_songs
   resources :songs
   resources :setlists

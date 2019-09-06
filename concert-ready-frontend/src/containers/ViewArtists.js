@@ -23,8 +23,8 @@ class ViewArtists extends Component {
 
         return (
 
-            <div>
-                <h1>Matching results:</h1>
+            <div className="view-artists">
+                <h1 className="matching-results">Matching results:</h1>
                 {this.state.haveArtists ? this.renderArtist() : "Loading..."}
             </div>
         )

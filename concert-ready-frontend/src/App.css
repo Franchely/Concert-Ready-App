@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  font-family: 'Rock Salt', cursive;
+  height: 100vh;
+  justify-content: center;
+  
+  
 }
 
 
@@ -17,61 +22,234 @@ code {
     monospace;
 }
 
+button {
+  font-size: 15px;
+  border-radius: 10px;
+  font-family: 'Rock Salt', cursive;
+  background-color: darksalmon;
+}
+
+button:hover {
+  background-color: white;
+}
+
+.navbar-user {
+  font-size: 15px;
+  float: right;
+  margin: 10px;
+  margin-top: -15px;
+}
+
+.navbar-logout {
+color: purple;
+text-shadow: -1px -1px darksalmon;
+}
+
 .navbar {
-  background-color: antiquewhite; 
-  margin: 50px;
-  height: 80px;
   display: flex;
-  justify-content: left;
+  justify-content: center;
+}
+
+.concert-ready {
+  font-size: 30px;
+  float: left;
+}
+
+.view-artists {
+  margin-left: 20%;
+  width: 500px;
+}
+
+.setlist-count {
+  font-size: 30px;
+}
+
+.splash-page {
+  display: flex;
+  justify-content: center;
+}
+
+.text-field {
+  height: 30px;
+  width: 300px;
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  font-family: 'Rock Salt', cursive;
+  text-shadow: -1px -1px darksalmon;
+}
+
+.stitched {
+  padding: 20px;
+  margin: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background: black;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 1.3em;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px lightsalmon, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  text-shadow: -1px -1px darksalmon;
+  font-weight: normal;
+  font-style: italic;
+  font-family: 'Rock Salt', cursive;
+
+  
 }
 
 .home-div {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  color: white;
+  text-shadow: -1px -1px darksalmon
+  
 }
 
-.left-div {
-  background-color: antiquewhite; 
-  margin: 30px;
+.login-div {
+  display: flex;
+  justify-content: center;
+  text-shadow: -2px -2px darksalmon;
 }
 
 .right-div {
-  background-color: antiquewhite;
-  margin: 30px; 
+  background-color: black;
+  padding: 20px;
+  margin: 10px;
+  background: black;
+  color: white;
+  font-size: 20px;
+  text-shadow: -2px -2px darksalmon;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px lightsalmon, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  font-weight: normal;
+  font-family: 'Rock Salt', cursive;
+}
+
+
+
+.search-div {
+  display: block;
+  justify-content: center;
+  padding: 20px;
+  margin: 10px;
+  margin-left: 20%;
+  margin-top: 70px;
+  width: 500px;
+  background: black;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px lightsalmon, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  font-weight: normal;
+  font-family: 'Rock Salt', cursive;
+  
+}
+
+.splash-page-div {
+ align-content: center;
 }
 
 .buttons-div {
-  background-color: antiquewhite; 
+  background-color: black;
+  color: white;
   padding: 20px;
   margin: 30px;
+  width: 300px;
+  border-radius: 0px;
+  text-shadow: -2px -2px darksalmon;
+  box-shadow: 0 0 0 4px lightsalmon, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  border-radius: 10px;
+
+
 }
 
-.log-in-form {
-  font-size: 30px;
-}
 
 .navbar-button {
- background-color: antiquewhite;
+ background-color: black;
  border-style: none;
- font-size: 20px;
+ font-size: 15px;
+ margin-left: 20px;
+ color: white;
+ padding: 10px;
+ border-style: solid;
+  border-width: 2px;
+  border-color: white;
+ 
 }
 
 .navbar-button:hover {
-  background-color: white;
+  border-color: white;
+  background-color: lightsalmon;
 }
 
 .setlist {
-  background-color: lightcoral;
+  background-color: whitesmoke;
   text-align: left;
-  margin: 100px;
+  margin: 30px;
+  width: 400px;
+  background: whitesmoke;
+  color: black;
+  line-height: 2.3em;
+  font-weight: normal;
+  font-family: 'Rock Salt', cursive;
+
+  box-shadow:
+  /* The top layer shadow */
+  0 -1px 1px rgba(0,0,0,0.15),
+  /* The second layer */
+  0 -10px 0 -5px whitesmoke,
+  /* The second layer shadow */
+  0 -10px 1px -4px rgba(0,0,0,0.15),
+   /* The third layer */
+  0 -20px 0 -10px whitesmoke,
+  /* The third layer shadow */
+  0 -20px 1px -9px rgba(0,0,0,0.15);
+  /* Padding for demo purposes */
+  padding: 30px;
+ 
 }
 
-.link-to-setlists {
+
+.link-to-setlists-div {
+  padding: 20px;
+  margin: 10px;
+  background: black;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.3em;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px lightsalmon, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  text-shadow: -2px -2px purple;
+  font-weight: normal;
+  font-style: italic;
+  font-family: 'Rock Salt', cursive;
+  margin-left: 20px;
+}
+
+.artist-navlink {
   text-decoration: none;
+  color: white;
+}
+
+.matching-results {
   color: black;
 }
 
-.link-to-setlists:hover {
-  text-decoration: underline;
+
+.artist-navlink:hover {
   color: lightsalmon;
 }
+
+.setlist-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 30%;
+  width: 550px;
+}
+
+
+
