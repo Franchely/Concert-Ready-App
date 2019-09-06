@@ -40,9 +40,7 @@ class App extends Component {
               <button className="navbar-button">Home</button> 
           </NavLink>
 
-          <NavLink to="/">
-              <button className="navbar-button">About</button> 
-          </NavLink>
+          
 
             {localStorage.token ? 
             
@@ -51,7 +49,9 @@ class App extends Component {
           </NavLink>
             
             :
-            null 
+            <NavLink to="/">
+              <button className="navbar-button">About</button> 
+            </NavLink>
             
             }
   

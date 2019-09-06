@@ -66,11 +66,16 @@ class LogIn extends Component {
        this.props.dispatch({type: "CURRENT_USER", payload: userInfo.user})
 
        this.setState({loggedIn: true})
+
+       this.props.dispatch({type: "LOGGED_IN", payload: true})
       
     }
 
     handleNewUser = (userInfo) => {
         console.log(userInfo)
+
+        this.setState({registered: true})
+        this.props.dispatch({type: "LOGGED_IN", payload: true})
     }
 
     showLogInForm = () => {
