@@ -11,6 +11,5 @@ class SetlistSongsController < ApplicationController
         render json: setlist_song
     end
 
-    
 
 end

@@ -14,6 +14,31 @@ class ViewSetlists extends Component {
         count: null
     }
 
+    viewPossibleSongs = (e) => {
+        console.log(this.state.artist)
+        let setlistSongsArrays = this.state.setlists.map(setlist => {return setlist.setlist_songs})
+        
+        let allSongsArrays = []
+        setlistSongsArrays.forEach(array => {
+            allSongsArrays.push(array.map(song => {return song.song_name}))});
+            
+            let songs = allSongsArrays.flat().sort()
+            const songsArray = []
+            let count = 1
+            for (let i = 0; i < songs.length; i++) {
+                if (songs[i] == songs[i+1]) {
+                    count += 1 } else {
+                        songsArray.push({song: songs[i], percent: Math.ceil(count / this.state.setlists.length * 100)}); 
+                        count = 1}
+                 }
+                 debugger 
+
+                    let sortedSongs = songsArray.sort((a, b) => (a.percent < b.percent) ? 1 : -1)
+
+                   return sortedSongs.map(song => {return `"${song.song}": ${song.percent}%`})
+            
+                }
+
     componentDidMount() {
         
         
@@ -45,7 +70,7 @@ class ViewSetlists extends Component {
 
         if (this.state.gotSetlists === true) {
             return this.state.setlists.map(setlist => {
-                return <Setlist key={setlist.id} setlist={setlist}></Setlist>
+                return <Setlist viewPossibleSongs={this.viewPossibleSongs} key={setlist.id} setlist={setlist}></Setlist>
             })
         } else {
             return "Sorry, an error has ocurred."

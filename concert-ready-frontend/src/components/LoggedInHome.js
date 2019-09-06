@@ -11,6 +11,7 @@ class LoggedInHome extends Component {
        haveArtists: false
     }
 
+
     fetchArtist = (e) => {
         e.preventDefault()
 

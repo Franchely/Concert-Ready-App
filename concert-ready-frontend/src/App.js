@@ -28,6 +28,9 @@ class App extends Component {
     return (
       <Router>
         <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+        </style>
+        <style>
         @import url('https://fonts.googleapis.com/css?family=Rock+Salt&display=swap');
         </style>
           <div className="App">
@@ -35,27 +38,30 @@ class App extends Component {
   
          
          <span className="concert-ready">Concert  Ready</span> 
-            
-          <NavLink to="/">
-              <button className="navbar-button">Home</button> 
-          </NavLink>
+            <div className="navbar-buttons-div">
 
-          
+                <NavLink to="/">
+                    <button className="navbar-button">Home</button> 
+                </NavLink>
 
-            {localStorage.token ? 
-            
-          <NavLink to="/mysetlists">
-              <button className="navbar-button">My Setlists</button>
-          </NavLink>
-            
-            :
-            <NavLink to="/">
-              <button className="navbar-button">About</button> 
-            </NavLink>
-            
-            }
+                
+
+                  {localStorage.token ? 
+                  
+                <NavLink to="/mysetlists">
+                    <button className="navbar-button">My Setlists</button>
+                </NavLink>
+                  
+                  :
+                  <NavLink to="/">
+                    <button className="navbar-button">About</button> 
+                  </NavLink>
+                  
+                  }
+
+            </div>
   
-          {localStorage.token ? <span className="navbar-user">{localStorage.username} <br></br><button onClick={this.logoutUser} className="navbar-logout">Log Out</button></span> : null}
+          {localStorage.token ? <div className="navbar-user">{localStorage.username} <button onClick={this.logoutUser} className="navbar-logout">Log Out</button></div> : null}
   
   
             </div>
