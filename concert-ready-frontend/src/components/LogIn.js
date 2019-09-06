@@ -7,7 +7,8 @@ class LogIn extends Component {
     state = {
         logInClicked: false,
         registerClicked: false,
-        loggedIn: false
+        loggedIn: false,
+        registered: false
     }
 
     handleRegister = (event) => {
@@ -26,7 +27,14 @@ class LogIn extends Component {
                 bio: "N/A"
             })
         }).then(response => response.json())
-        .then(this.handleLogin)
+        .then(userInfo => { 
+            if (!userInfo.errors) {
+                localStorage.token = userInfo.token 
+                localStorage.username = userInfo.user.username 
+                localStorage.id = userInfo.user.id 
+                this.handleNewUser(userInfo)
+            }
+        })
     }
 
     handleSubmit = (event) => {
@@ -54,10 +62,15 @@ class LogIn extends Component {
     }
 
     handleLogin = (userInfo) => {
+        console.log(userInfo)
        this.props.dispatch({type: "CURRENT_USER", payload: userInfo.user})
 
        this.setState({loggedIn: true})
       
+    }
+
+    handleNewUser = (userInfo) => {
+        console.log(userInfo)
     }
 
     showLogInForm = () => {
@@ -66,16 +79,13 @@ class LogIn extends Component {
 
     showRegister = () => {
         this.setState({registerClicked: !this.state.registerClicked})
+
     }
 
     render() {
 
         return (
             <div className="splash-page-div">
-
-                        {/* <div className="right-div">
-                            <h2>View past setlists and concerts</h2>
-                        </div> */}
 
                 <div className="buttons-div">
                <h2 onClick={this.showLogInForm}>Log In</h2> 

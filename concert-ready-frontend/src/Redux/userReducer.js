@@ -10,7 +10,8 @@ import { createStore } from 'redux'
             searchTerm: "",
             clickedArtist: {},
             allSetlists: [],
-            location: ""
+            location: "",
+            loggedIn: false
             
         }
 
@@ -66,6 +67,12 @@ const userReducer = (state = initialState, action) =>{
 
                 }
                 break;
+        case "LOGGED_IN":
+            state = {
+                ...state, 
+                loggedIn: action.payload
+            }
+            break;
         default:
            state = initialState
            break;
