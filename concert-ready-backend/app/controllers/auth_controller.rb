@@ -6,7 +6,10 @@ class AuthController < ApplicationController
         if user && user.authenticate(user_login_params[:password])
             token = encode_token(user)
             render json: {user: user, jwt: token}
+        else
+            render json: {errors: user.errors.full_messages}
         end
+
     end
 
     def persist

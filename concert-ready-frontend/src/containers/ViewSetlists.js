@@ -12,7 +12,9 @@ class ViewSetlists extends Component {
         gotSetlists: false,
         setlists: null,
         count: null,
-        viewProbability: false
+        viewProbability: false,
+        searchTerm: "",
+        setlistsCopy: null 
     }
 
     viewPossibleSongs = (e) => {
@@ -59,6 +61,7 @@ class ViewSetlists extends Component {
             .then(data => {
                 this.setState({
                 setlists: data,
+                setlistsCopy: data,
                 gotSetlists: true,
                 count: Object.keys(data).length 
                 })
@@ -66,16 +69,36 @@ class ViewSetlists extends Component {
         
     }
 
+    handleChange = (e) => {
+        
+        this.setState({searchTerm: e.target.value})
+    }
+
     handleButtonClick = () => {
         this.setState({viewProbability: !this.state.viewProbability})
     }
 
     renderSingleSetlists = () => {
-
+        
         if (this.state.gotSetlists === true) {
-            return this.state.setlists.map(setlist => {
-                return <Setlist key={setlist.id} setlist={setlist}></Setlist>
-            })
+            if (this.state.searchTerm.length > 0) {
+            
+                let songsArray = []
+                for (let i = 0; i < this.state.setlists.length; i++) {
+                    if (this.state.setlists[i].setlist_songs.find(({song_name}) => song_name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))) {
+                        songsArray.push(this.state.setlists[i])
+                    }
+                }
+               
+                return songsArray.map(setlist => {
+                    return <Setlist key={setlist.id} setlist={setlist}></Setlist>
+                })
+            } else {
+
+                return this.state.setlists.map(setlist => {
+                    return <Setlist key={setlist.id} setlist={setlist}></Setlist>
+                })
+            }
         } else {
             return "Sorry, an error has ocurred."
         }
@@ -87,6 +110,8 @@ class ViewSetlists extends Component {
         return (
                 <div>
 
+                    
+
                 <div className="setlist-count">{this.state.count ? this.state.count : null} Setlists For {localStorage.artist}</div>
                     {this.state.viewProbability ?
                     
@@ -94,6 +119,13 @@ class ViewSetlists extends Component {
                         :
                         <button onClick={this.handleButtonClick} className="view-probablity">View Song Stats</button>
                         }
+
+                        <div className="filter-div">
+                      
+                        <span> Filter By Song: </span>
+                        <input type="text" placeholder="Song" value={this.state.searchTerm} onChange={this.handleChange}></input>
+                       
+                        </div>
 
                 <div className="container">
                     {this.state.viewProbability ?
@@ -112,7 +144,7 @@ class ViewSetlists extends Component {
                         {this.state.viewProbability ? 
                         
                             <div className="setlist">
-                                <h3 className="likely-songs">Song Stats </h3>
+                                <h3 className="likely-songs">Songs By Probablity</h3>
                                 <ol>
                                     {!!this.state.setlists ? this.viewPossibleSongs() : null}
                                 </ol>

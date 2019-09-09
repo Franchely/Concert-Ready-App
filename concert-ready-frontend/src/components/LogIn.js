@@ -58,7 +58,12 @@ class LogIn extends Component {
                 localStorage.id = userInfo.user.id 
                 this.handleLogin(userInfo)
             }
-        })
+        }).catch(this.handleError)
+    }
+
+    handleError = () => {
+        alert("Incorrect Username or Password")
+        localStorage.clear()
     }
 
     handleLogin = (userInfo) => {
