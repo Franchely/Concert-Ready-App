@@ -11,11 +11,13 @@ class ViewSetlists extends Component {
         artist: "",
         gotSetlists: false,
         setlists: null,
-        count: null
+        count: null,
+        viewProbability: false
     }
 
     viewPossibleSongs = (e) => {
         console.log(this.state.artist)
+        
         let setlistSongsArrays = this.state.setlists.map(setlist => {return setlist.setlist_songs})
         
         let allSongsArrays = []
@@ -31,11 +33,9 @@ class ViewSetlists extends Component {
                         songsArray.push({song: songs[i], percent: Math.ceil(count / this.state.setlists.length * 100)}); 
                         count = 1}
                  }
-                 debugger 
-
                     let sortedSongs = songsArray.sort((a, b) => (a.percent < b.percent) ? 1 : -1)
-
-                   return sortedSongs.map(song => {return `"${song.song}": ${song.percent}%`})
+               
+                   return sortedSongs.map(song => {return <li>{song.song}: {song.percent}%</li>})
             
                 }
 
@@ -66,11 +66,15 @@ class ViewSetlists extends Component {
         
     }
 
+    handleButtonClick = () => {
+        this.setState({viewProbability: !this.state.viewProbability})
+    }
+
     renderSingleSetlists = () => {
 
         if (this.state.gotSetlists === true) {
             return this.state.setlists.map(setlist => {
-                return <Setlist viewPossibleSongs={this.viewPossibleSongs} key={setlist.id} setlist={setlist}></Setlist>
+                return <Setlist key={setlist.id} setlist={setlist}></Setlist>
             })
         } else {
             return "Sorry, an error has ocurred."
@@ -81,10 +85,45 @@ class ViewSetlists extends Component {
     render() {
      
         return (
-            <div className="setlist-container">
-                <span className="setlist-count">{this.state.count ? this.state.count : null} Setlists For {localStorage.artist}</span>
-                
-                { !!this.state.setlists ? this.renderSingleSetlists() : <h2>Loading...</h2>}
+                <div>
+
+                <div className="setlist-count">{this.state.count ? this.state.count : null} Setlists For {localStorage.artist}</div>
+                    {this.state.viewProbability ?
+                    
+                        <button onClick={this.handleButtonClick} className="view-probablity">View Setlists</button>
+                        :
+                        <button onClick={this.handleButtonClick} className="view-probablity">View Song Stats</button>
+                        }
+
+                <div className="container">
+                    {this.state.viewProbability ?
+                    
+                        null
+                        :
+                    <div className="setlist-container">
+
+                    { !!this.state.setlists ? this.renderSingleSetlists() : <h2>Loading...</h2>}
+
+                    </div>
+
+                    }
+
+                    <div className="possible-setlist-div">
+                        {this.state.viewProbability ? 
+                        
+                            <div className="setlist">
+                                <h3 className="likely-songs">Song Stats </h3>
+                                <ol>
+                                    {!!this.state.setlists ? this.viewPossibleSongs() : null}
+                                </ol>
+                            </div>
+                            
+                        :
+                            null
+                        }
+
+                    </div>
+            </div>
             </div>
         )
     }

@@ -25,7 +25,6 @@ class Setlist extends Component {
             if (parseInt(eventDate.split("-")[1]) >= month && parseInt(eventDate.split("-")[0]) >= day && parseInt(eventDate.split("-")[2]) >= year)
             return <div className="possibe-setlist">
                     <h4>UPCOMING SHOW</h4>
-                    <button onClick={(e) => this.props.viewPossibleSongs(e)}>View Possible Songs</button>
                   </div> 
             else {
                 return <h4>NO SETLIST FOUND</h4>

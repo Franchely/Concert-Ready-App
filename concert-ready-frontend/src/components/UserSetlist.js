@@ -2,6 +2,10 @@ import React, {Component} from "react"
 
 class UserSetlist extends Component {
 
+    state = {
+        deleted: false
+    }
+
     renderSongs = () => {
 
         const setlistSongs = this.props.userSetlist.setlist.setlist_songs.reverse()
@@ -23,13 +27,7 @@ class UserSetlist extends Component {
         }
     }
 
-    removeSetlist = (event) => {
-        fetch(`http://localhost:3000/user_setlists/${event.target.id}`, {
-            method: "DELETE"
-        }).then(response => response.json())
-        .then(console.log)
-    }
-
+ 
     render() {
 
         return (
@@ -41,7 +39,7 @@ class UserSetlist extends Component {
                 <ol className="songs-list">
                     {this.renderSongs()}
                 </ol>
-                <button id={this.props.userSetlist.id} onClick={this.removeSetlist}>Remove</button>
+                <button id={this.props.userSetlist.id} onClick={this.props.removeSetlist}>Remove</button>
             </div>
 
         )

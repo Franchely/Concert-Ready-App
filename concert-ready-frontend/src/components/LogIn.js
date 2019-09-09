@@ -92,9 +92,8 @@ class LogIn extends Component {
         return (
             <div className="splash-page-div">
 
-                <div className="buttons-div">
+                <div className="login-div">
                <h2 onClick={this.showLogInForm}>Log In</h2> 
-
                 {this.state.logInClicked ? 
                     <form onSubmit={this.handleSubmit} className="log-in-form">
                     <input type="text" name="username" value={this.props.username} placeholder="Username" onChange={(e) => this.props.dispatch({type: "INPUT_USERNAME", payload: e.target.value})}></input>
@@ -108,7 +107,7 @@ class LogIn extends Component {
                
                </div>
 
-               <div className="buttons-div">
+               <div className="register-div">
                    <h2 onClick={this.showRegister}>Register</h2>
                    {this.state.registerClicked ? 
                     <form onSubmit={this.handleRegister} className="register-form">
