@@ -2,11 +2,15 @@
   text-align: center;
   justify-content: center;
   font-family: 'Rock Salt', cursive;
-  height: 100vh;
+  height: 175vh;
+  background:url(https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+  background-size: 1700px;
+  background-color: #0F1521;
 }
 
 
 body {
+  background-color: #0F1521;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -54,7 +58,6 @@ margin-left: 20px;
 .navbar {
   display: flex;
   justify-content: center;
-  
 }
 
 .concert-ready {
@@ -152,7 +155,7 @@ margin-left: 20px;
   justify-content: center;
   padding: 20px;
   margin: 10px;
-  margin-top: 70px;
+  margin-top: 90px;
   margin-left: 20%;
   width: 500px;
   height: 200px;
@@ -310,10 +313,15 @@ margin-left: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  overflow: scroll;
+ 
+ 
   /* margin-top: 20px; */
 }
 .setlist-container {
-  margin-top: 20px;
+  
+  
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;

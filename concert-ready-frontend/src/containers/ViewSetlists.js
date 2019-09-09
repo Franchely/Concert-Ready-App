@@ -14,7 +14,8 @@ class ViewSetlists extends Component {
         count: null,
         viewProbability: false,
         searchTerm: "",
-        setlistsCopy: null 
+        setlistsCopy: null
+        
     }
 
     viewPossibleSongs = (e) => {
