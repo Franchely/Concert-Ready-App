@@ -74,7 +74,7 @@ margin-left: 20px;
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
   margin-top: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .splash-page {
@@ -321,7 +321,7 @@ margin-left: 20px;
 .setlist-container {
   
   
-  margin-top: 40px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   flex-direction: column;

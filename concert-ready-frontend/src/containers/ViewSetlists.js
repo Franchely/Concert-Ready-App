@@ -114,12 +114,6 @@ class ViewSetlists extends Component {
                     
 
                 <div className="setlist-count">{this.state.count ? this.state.count : null} Setlists For {localStorage.artist}</div>
-                    {this.state.viewProbability ?
-                    
-                        <button onClick={this.handleButtonClick} className="view-probablity">View Setlists</button>
-                        :
-                        <button onClick={this.handleButtonClick} className="view-probablity">View Song Stats</button>
-                        }
 
                         <div className="filter-div">
                       
@@ -127,6 +121,14 @@ class ViewSetlists extends Component {
                         <input type="text" placeholder="Song" value={this.state.searchTerm} onChange={this.handleChange}></input>
                        
                         </div>
+
+                    {this.state.viewProbability ?
+                    
+                        <button onClick={this.handleButtonClick} className="view-probablity">View Setlists</button>
+                        :
+                        <button onClick={this.handleButtonClick} className="view-probablity">View Song Stats</button>
+                        }
+
 
                 <div className="container">
                     {this.state.viewProbability ?
