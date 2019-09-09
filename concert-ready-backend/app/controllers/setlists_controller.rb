@@ -50,7 +50,7 @@ class SetlistsController < ApplicationController
                     end
                 end
             end 
-            setlists = Setlist.where(artist: Artist.find_by(mbid: artist_url))
+            setlists = Setlist.where(artist: Artist.find_by(mbid: artist_url)).order(:id)
             render json: setlists, include: [:setlist_songs]
         end
     end

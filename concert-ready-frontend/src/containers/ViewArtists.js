@@ -10,7 +10,7 @@ class ViewArtists extends Component {
 
     renderArtist = () => {
         return this.state.artists.map(artist => {
-            return <Artist artist={artist}></Artist>
+            return <Artist key={artist.id} artist={artist}></Artist>
         })
     }
 
@@ -19,7 +19,7 @@ class ViewArtists extends Component {
     }
 
     render() {
-        console.log(this.props.artists)
+      
 
         return (
 

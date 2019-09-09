@@ -11,6 +11,7 @@ class LoggedInHome extends Component {
        haveArtists: false
     }
 
+
     fetchArtist = (e) => {
         e.preventDefault()
 
@@ -30,8 +31,6 @@ class LoggedInHome extends Component {
     }
 
     renderData = () => {
-        console.log(this.state.data)
-        
         return <ViewArtists artists={this.state.data}></ViewArtists>
     }
 

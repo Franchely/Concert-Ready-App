@@ -7,7 +7,8 @@ class LogIn extends Component {
     state = {
         logInClicked: false,
         registerClicked: false,
-        loggedIn: false
+        loggedIn: false,
+        registered: false
     }
 
     handleRegister = (event) => {
@@ -26,7 +27,14 @@ class LogIn extends Component {
                 bio: "N/A"
             })
         }).then(response => response.json())
-        .then(this.handleLogin)
+        .then(userInfo => { 
+            if (!userInfo.errors) {
+                localStorage.token = userInfo.token 
+                localStorage.username = userInfo.user.username 
+                localStorage.id = userInfo.user.id 
+                this.handleNewUser(userInfo)
+            }
+        })
     }
 
     handleSubmit = (event) => {
@@ -54,10 +62,20 @@ class LogIn extends Component {
     }
 
     handleLogin = (userInfo) => {
+        console.log(userInfo)
        this.props.dispatch({type: "CURRENT_USER", payload: userInfo.user})
 
        this.setState({loggedIn: true})
+
+       this.props.dispatch({type: "LOGGED_IN", payload: true})
       
+    }
+
+    handleNewUser = (userInfo) => {
+        console.log(userInfo)
+
+        this.setState({registered: true})
+        this.props.dispatch({type: "LOGGED_IN", payload: true})
     }
 
     showLogInForm = () => {
@@ -66,6 +84,7 @@ class LogIn extends Component {
 
     showRegister = () => {
         this.setState({registerClicked: !this.state.registerClicked})
+
     }
 
     render() {
@@ -73,13 +92,8 @@ class LogIn extends Component {
         return (
             <div className="splash-page-div">
 
-                        {/* <div className="right-div">
-                            <h2>View past setlists and concerts</h2>
-                        </div> */}
-
-                <div className="buttons-div">
+                <div className="login-div">
                <h2 onClick={this.showLogInForm}>Log In</h2> 
-
                 {this.state.logInClicked ? 
                     <form onSubmit={this.handleSubmit} className="log-in-form">
                     <input type="text" name="username" value={this.props.username} placeholder="Username" onChange={(e) => this.props.dispatch({type: "INPUT_USERNAME", payload: e.target.value})}></input>
@@ -93,7 +107,7 @@ class LogIn extends Component {
                
                </div>
 
-               <div className="buttons-div">
+               <div className="register-div">
                    <h2 onClick={this.showRegister}>Register</h2>
                    {this.state.registerClicked ? 
                     <form onSubmit={this.handleRegister} className="register-form">

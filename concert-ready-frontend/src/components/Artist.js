@@ -18,9 +18,11 @@ class Artist extends Component {
 
             <div className="link-to-setlists-div">
                 <NavLink to="/setlists" onClick={this.handleClick} artist={this.props.artist} className="artist-navlink">
+                   <button className="artist-button">
                     <h2>
                     {this.props.artist.name}
                     </h2>
+                   </button>
                 </NavLink>
             </div>
         )
