@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
 
+
 class Setlist extends Component {
 
     state = {
@@ -32,6 +33,20 @@ class Setlist extends Component {
         }
     }
 
+    renderDate = (date) => {
+
+        var months    = ['January','February','March','April','May','June','July','August','September','October','November','December']
+
+        let dateArray = date.split("-")
+        var month = dateArray[1] 
+        let day = dateArray[0]
+        let year = dateArray[2]
+        const newDate = [month, day, year].join("-")
+        const d = new Date(newDate)
+        month = months[d.getMonth()]
+       
+       return `${month} ${day}, ${year}`
+    }
    
 
     saveSetlist = (e) => {
@@ -60,7 +75,7 @@ class Setlist extends Component {
         return (
 
             <div className="setlist">
-                <h3>{this.props.setlist.venue}, {this.props.setlist.date}</h3>
+                <h3>{this.props.setlist.venue}, {this.renderDate(this.props.setlist.date)}</h3>
                 <h4>{this.props.setlist.city}, {this.props.setlist.country}</h4>
                 <ol className="songs-list">
                     {this.renderSongs()}

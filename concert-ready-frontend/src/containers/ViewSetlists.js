@@ -31,7 +31,7 @@ class ViewSetlists extends Component {
             const songsArray = []
             let count = 1
             for (let i = 0; i < songs.length; i++) {
-                if (songs[i] == songs[i+1]) {
+                if (songs[i] === songs[i+1]) {
                     count += 1 } else {
                         songsArray.push({song: songs[i], percent: Math.ceil(count / this.state.setlists.length * 100)}); 
                         count = 1}

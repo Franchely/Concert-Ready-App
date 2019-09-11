@@ -2,7 +2,7 @@
   text-align: center;
   justify-content: center;
   font-family: 'Rock Salt', cursive;
-  height: 175vh;
+  height: 170vh;
   background:url(https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
   background-size: 1700px;
   background-color: #0F1521;
@@ -74,7 +74,7 @@ margin-left: 20px;
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
   margin-top: 50px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .splash-page {
@@ -266,7 +266,7 @@ margin-left: 20px;
 .link-to-setlists-div {
  display: flex;
  justify-content: center;
-  color: black;
+  color: white;
   font-size: 20px;
   font-weight: bold;
   line-height: 1.3em;
@@ -275,7 +275,8 @@ margin-left: 20px;
   font-weight: normal;
   font-style: italic;
   font-family: 'Rock Salt', cursive;
-
+  margin-bottom: 20px;
+  
 }
 
 .artist-navlink {
@@ -285,6 +286,17 @@ margin-left: 20px;
 
 }
 
+.artist-button {
+  background-color: black;
+  color: white;
+  text-shadow: -2px -2px purple;
+  font-family: 'Rock Salt', cursive;
+  padding-left: 15px;
+}
+
+.artist-button:hover {
+  background-color: lightsalmon;
+}
 .matching-results {
   color: black;
   font-family: 'Roboto', sans-serif;
@@ -336,10 +348,10 @@ margin-left: 20px;
  
 }
 
-/* .filter-div {
-  
+.filter-div {
+  font-family: 'Roboto', sans-serif;
 
-} */
+}
 
 
 

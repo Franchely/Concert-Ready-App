@@ -1,7 +1,5 @@
 import React, {Component} from "react"
-import {NavLink} from "react-router-dom"
 import {connect} from "react-redux"
-import ViewSetlists from "../containers/ViewSetlists"
 import ViewArtists from "../containers/ViewArtists"
 
 class LoggedInHome extends Component {
@@ -11,6 +9,9 @@ class LoggedInHome extends Component {
        haveArtists: false
     }
 
+    componentDidMount() {
+        localStorage.artist = ""
+    }
 
     fetchArtist = (e) => {
         e.preventDefault()
