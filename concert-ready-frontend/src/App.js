@@ -69,6 +69,7 @@ class App extends Component {
             <Route path="/setlists" component={ViewSetlists} ></Route>
             <Route path="/myconcerts" component={MyConcerts} ></Route>
             <Route path="/mysetlists" component={MySetlists} ></Route>
+            <Route path="/about" component={About}></Route>
             <Route exact path="/" component={SplashPage}></Route>
           </div>
   
