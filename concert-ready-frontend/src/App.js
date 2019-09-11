@@ -6,6 +6,7 @@ import ViewSetlists from "./containers/ViewSetlists"
 import MyConcerts from './containers/MyConcerts';
 import MySetlists from "./containers/MySetlists"
 import SplashPage from './components/SplashPage';
+import About from "./components/About"
 import {connect} from "react-redux"
 
 
@@ -53,7 +54,7 @@ class App extends Component {
                 </NavLink>
                   
                   :
-                  <NavLink to="/">
+                  <NavLink to="/about">
                     <button className="navbar-button">About</button> 
                   </NavLink>
                   
@@ -69,6 +70,7 @@ class App extends Component {
             <Route path="/setlists" component={ViewSetlists} ></Route>
             <Route path="/myconcerts" component={MyConcerts} ></Route>
             <Route path="/mysetlists" component={MySetlists} ></Route>
+            <Route path="/about" component={About}></Route>
             <Route exact path="/" component={SplashPage}></Route>
           </div>
   
