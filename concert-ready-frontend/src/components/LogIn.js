@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-import {NavLink} from "react-router-dom"
 import { connect } from 'react-redux';
 
 class LogIn extends Component {
@@ -34,7 +33,7 @@ class LogIn extends Component {
                 localStorage.id = userInfo.user.id 
                 this.handleNewUser(userInfo)
             }
-        })
+        }).catch(this.handleError)
     }
 
     handleSubmit = (event) => {
