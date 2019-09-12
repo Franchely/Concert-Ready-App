@@ -19,7 +19,7 @@ class LoggedInHome extends Component {
         let artist = this.props.searchTerm
 
         if (artist.length === 0) {
-            alert("Must enter a search term")
+            alert("Are you trying to search for an invisible artist?")
         } else {
 
             fetch("http://localhost:3000/artists", {
@@ -31,8 +31,15 @@ class LoggedInHome extends Component {
                    body: JSON.stringify({artist: artist})
                })
                .then(response => response.json())
-               .then(data => {this.setState({data: data, haveArtists: true})})
-               .catch(err => console.log(err))
+               .then(data => {
+                   if (data.error) {
+                       alert("Sorry, no artists by that name were found.")
+                   } else {
+                        this.setState({data: data, haveArtists: true})
+                   }
+                
+                })
+                .catch(err => console.log(err))
 
         }
 
