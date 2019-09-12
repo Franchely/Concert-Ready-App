@@ -66,7 +66,7 @@ class ViewSetlists extends Component {
                 gotSetlists: true,
                 count: Object.keys(data).length 
                 })
-            })
+            }).catch(err => alert("Sorry, an error has occurred."))
         
     }
 
