@@ -18,17 +18,24 @@ class LoggedInHome extends Component {
 
         let artist = this.props.searchTerm
 
-        fetch("http://localhost:3000/artists", {
-               method: "POST",
-               headers: {
-                   "Content-Type": "application/json",
-                   "Accept": "application/json"
-               },
-               body: JSON.stringify({artist: artist})
-           })
-           .then(response => response.json())
-           .then(data => {this.setState({data: data, haveArtists: true})})
-           .catch(err => console.log(err))
+        if (artist.length === 0) {
+            alert("Must enter a search term")
+        } else {
+
+            fetch("http://localhost:3000/artists", {
+                   method: "POST",
+                   headers: {
+                       "Content-Type": "application/json",
+                       "Accept": "application/json"
+                   },
+                   body: JSON.stringify({artist: artist})
+               })
+               .then(response => response.json())
+               .then(data => {this.setState({data: data, haveArtists: true})})
+               .catch(err => console.log(err))
+
+        }
+
     }
 
     renderData = () => {
