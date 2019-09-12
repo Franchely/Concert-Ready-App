@@ -31,7 +31,7 @@ class ViewArtists extends Component {
                 <h1 className="matching-results">Matching results:</h1>
                 {this.state.haveArtists ? this.renderArtist() : "Loading..."}
 
-                <button onClick={this.clickBack}>Back</button>
+                <button className="back-button" onClick={this.clickBack}>Back</button>
             </div>
         )
     }

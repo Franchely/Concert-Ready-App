@@ -19,10 +19,8 @@ class App extends Component {
 
 
   logoutUser = () => {
-   
     localStorage.clear()
-    
-    window.history.back(-2)
+    window.location.assign("http://localhost:3001/")
     this.setState({logoutClicked: true})
 
     this.props.dispatch({type: "LOGGED_IN", payload: false})

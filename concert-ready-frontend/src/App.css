@@ -72,7 +72,9 @@ margin-left: 20px;
   margin-top: 30px;
 }
 
-
+.back-button {
+  width: 50px;
+}
 
 .setlist-count {
   font-size: 30px;
