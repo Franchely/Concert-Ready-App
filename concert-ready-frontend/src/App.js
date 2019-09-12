@@ -19,7 +19,10 @@ class App extends Component {
 
 
   logoutUser = () => {
+   
     localStorage.clear()
+    
+    window.history.back(-2)
     this.setState({logoutClicked: true})
 
     this.props.dispatch({type: "LOGGED_IN", payload: false})
@@ -48,6 +51,7 @@ class App extends Component {
                 
 
                   {localStorage.token ? 
+                  
                   
                 <NavLink to="/mysetlists">
                     <button className="navbar-button">My Setlists</button>
