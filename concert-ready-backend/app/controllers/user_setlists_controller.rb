@@ -10,10 +10,12 @@ class UserSetlistsController < ApplicationController
         
         setlist = Setlist.find(params.permit(:setlistId)[:setlistId])
         user = User.find(params.permit(:userId)[:userId])
+
+        setlist.setlist_songs.reverse 
         
         usersetlist = UserSetlist.create(setlist_id: setlist.id, user_id: user.id)
-
-        render json: usersetlist
+        render json: usersetlist.setlist.setlist_songs.order("id ASC")
+      
     end
 
     def destroy

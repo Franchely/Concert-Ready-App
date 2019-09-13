@@ -11,7 +11,9 @@ class Setlist extends Component {
 
     renderSongs = () => {
 
-        const setlistSongs = this.props.setlist.setlist_songs.reverse()
+        if (this.state.saved === true) {
+
+            const setlistSongs = this.props.setlist.setlist_songs
         if (this.props.setlist.setlist_songs.length > 0) {
 
             return setlistSongs.map(song => {
@@ -30,6 +32,32 @@ class Setlist extends Component {
             else {
                 return <h4>NO SETLIST FOUND</h4>
             }
+         }
+
+        } else {
+
+
+            const setlistSongs = this.props.setlist.setlist_songs.reverse()
+            if (this.props.setlist.setlist_songs.length > 0) {
+    
+                return setlistSongs.map(song => {
+                    return <li>{song.song_name}</li>
+                })
+            } else {
+                var eventDate = this.props.setlist.date 
+                var d = new Date()
+                var month = d.getMonth() +1
+                var day = d.getDay()
+                var year = d.getFullYear()
+                if (parseInt(eventDate.split("-")[1]) >= month && parseInt(eventDate.split("-")[0]) >= day && parseInt(eventDate.split("-")[2]) >= year)
+                return <div className="possibe-setlist">
+                        <h4>UPCOMING SHOW</h4>
+                      </div> 
+                else {
+                    return <h4>NO SETLIST FOUND</h4>
+                }
+            }
+
         }
     }
 
@@ -64,7 +92,8 @@ class Setlist extends Component {
                 setlistId: setlistId 
             })
         }).then(response => response.json())
-        .then(this.setState({
+        .then(
+            this.setState({
             saved: true
         }))
     }

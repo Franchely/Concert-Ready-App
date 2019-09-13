@@ -32,6 +32,8 @@ class LogIn extends Component {
                 localStorage.username = userInfo.user.username 
                 localStorage.id = userInfo.user.id 
                 this.handleNewUser(userInfo)
+            } else {
+                alert("Did you fill everything out? If so, try to be a little more original with your username.")
             }
         }).catch(this.handleError)
     }
@@ -56,6 +58,8 @@ class LogIn extends Component {
                 localStorage.username = userInfo.user.username 
                 localStorage.id = userInfo.user.id 
                 this.handleLogin(userInfo)
+            } else {
+                alert("Sorry boo, your username or password is probably wrong.")
             }
         }).catch(this.handleError)
     }
@@ -94,8 +98,15 @@ class LogIn extends Component {
     render() {
 
         return (
-            <div className="splash-page-div">
 
+            <div className="main-page-div">
+                <div className="info-navbar-div">
+                      Search past setlists and concerts
+                      <br></br>
+                      <br></br>
+                      View songs most likely to be played
+                    </div>
+            <div className="splash-page-div">
                 <div className="login-div">
                <h2 onClick={this.showLogInForm}>Log In</h2> 
                 {this.state.logInClicked ? 
@@ -127,6 +138,7 @@ class LogIn extends Component {
                     null}
                    
                </div>
+            </div>
             </div>
         )
     }

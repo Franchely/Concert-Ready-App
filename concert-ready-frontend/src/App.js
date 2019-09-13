@@ -37,7 +37,7 @@ class App extends Component {
         </style>
           <div className="App">
             <div className="navbar" className="stitched">
-  
+      
          
          <span className="concert-ready">Concert  Ready</span> 
             <div className="navbar-buttons-div">

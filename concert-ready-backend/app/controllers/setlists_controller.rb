@@ -19,8 +19,7 @@ class SetlistsController < ApplicationController
         artist_url = @artist.mbid 
 
         if  Setlist.exists?(artist: Artist.find(@artist.id))
-
-            render json: Setlist.where(artist: Artist.find(@artist.id))
+            render json: Setlist.where(artist: Artist.find(@artist.id)).reverse 
 
         else
             
