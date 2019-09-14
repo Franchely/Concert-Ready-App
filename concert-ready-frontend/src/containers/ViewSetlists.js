@@ -101,7 +101,8 @@ class ViewSetlists extends Component {
                 })
             }
         } else {
-            return "Sorry, an error has ocurred."
+            alert("Sorry, an error has ocurred.")
+            window.location.assign("http://localhost:3001/")
         }
         
     }

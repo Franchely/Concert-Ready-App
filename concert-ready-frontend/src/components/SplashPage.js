@@ -16,7 +16,7 @@ class SplashPage extends Component {
         return (
 
             <div className="splash-page">
-
+                
                 {this.checkUser()}
             </div>
         )
